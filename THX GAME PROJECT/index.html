@@ -8,6 +8,9 @@
 <body>
 
 <canvas id="myCanvas" width="480" height="320"></canvas>
+<img id="source"
+       src="/THX GAME PROJECT/THX_logo.png"
+       width="300" height="220">
 
 <script>
     var canvas = document.getElementById("myCanvas");
@@ -87,7 +90,8 @@
 
     function drawBall() {
         ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        ctx.drawImage(image, x, y);
+        //ctx.arc(x, y, ballRadius, 0, Math.PI*2);
         ctx.fillStyle = "#0095DD";
         ctx.fill();
         ctx.closePath();
@@ -178,4 +182,4 @@
 </script>
 
 </body>
-</html>
+</html>`
