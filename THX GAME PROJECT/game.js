@@ -77,7 +77,8 @@ if (y > height - 20) {
 }
 
 if ((x <= width - 20) && (x >= 0) && (y <= height - 20) && (y >= 0)) {
-  //console.log("neutral");
+  xaxis = "Neutral"
+  yaxis = "Neutral"
 }
 
 
