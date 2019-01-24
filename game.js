@@ -57,14 +57,7 @@ function setup() {
 function draw() {
   background(102);
   collisionDetection();
-
-  beginShape(LINES);
-  for (i = 0; i < points.length; i++) {
-    var pos = points[i];
-    vertex(pos.x, pos.y);
-    print(pos.x, pos.y)
-  }
-  endShape(CLOSE);
+  
 
   // Update the position of the shape
   xpos = xpos + xspeed * xdirection;
@@ -197,11 +190,14 @@ function draw() {
 
 
 
-
-
-
-
-
+  beginShape(LINES);
+  for (i = 0; i < points.length; i++) {
+    if (bounce == false) {
+      var pos = points[i];
+      vertex(pos.x, pos.y);
+    }
+  }
+  endShape();
 
 
 
