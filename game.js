@@ -36,14 +36,7 @@ function preload() {
   imgg = loadImage('assets/THX_logo.png');
 }
 
-function collisionDetection() {
-  if (x > xpos + imgWidth && x < xpos - imgWidth) {
-    console.log("BITCH!");
-  }
-  if (y > ypos + imgHeight && y < ypos - imgHeight) {
-    console.log("GET OVER HERE!");
-  }
-}
+
 
 function setup() {
   createCanvas(1200, 550);
@@ -53,6 +46,14 @@ function setup() {
   // Set the starting position of the shape
   xpos = width / 2;
   ypos = height / 2;
+
+  var v = createVector(x, y);
+    points.push(v);
+    var w = createVector(z, a);
+    pointz.push(w);
+
+    z = x;
+    a = y;
 }
 
 function draw() {
@@ -60,8 +61,8 @@ function draw() {
 
   for (var i = 0; i < points.length; i++) {
     pos = points[i];
-    poz = pointz[i];
-    line(pos.x, pos.y, poz.z, poz.a);
+    endpos = pointz[i];
+    line(pos.x, pos.y, endpos.z, endpos.a);
     
   }
 
