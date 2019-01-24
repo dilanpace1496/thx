@@ -49,12 +49,12 @@ function setup() {
   ypos = height / 2;
 
   var v = createVector(x, y);
-  points.push(v);
-  var w = createVector(xstart, ystart);
-  pointz.push(w);
+    points.push(v);
+    var w = createVector(xstart, ystart);
+    pointz.push(w);
 
-  xstart = x;
-  ystart = y;
+    xstart = x;
+    ystart = y;
 }
 
 function draw() {
@@ -64,7 +64,7 @@ function draw() {
     pos = points[i];
     endpos = pointz[i];
     line(pos.x, pos.y, endpos.x, endpos.y);
-
+    
   }
 
   // Update the position of the shape
@@ -119,7 +119,7 @@ function draw() {
 
       }
     }
-    else if ((xaxis == "Left") || (xaxis == "Neutral")) {
+    if ((xaxis == "Left") || (xaxis == "Neutral")) {
       if (keyIsDown(RIGHT_ARROW)) {
         direction = "Right";
         x += 2;
@@ -129,7 +129,7 @@ function draw() {
 
       }
     }
-    else if ((yaxis == "Down") || (yaxis == "Neutral")) {
+    if ((yaxis == "Down") || (yaxis == "Neutral")) {
       if (keyIsDown(UP_ARROW)) {
         direction = "Up";
         y -= 2;
@@ -138,7 +138,7 @@ function draw() {
 
       }
     }
-    else if ((yaxis == "Up") || (yaxis == "Neutral")) {
+    if ((yaxis == "Up") || (yaxis == "Neutral")) {
       if (keyIsDown(DOWN_ARROW)) {
         direction = "Down";
         y += 2;
@@ -158,7 +158,7 @@ function draw() {
 
       }
     }
-    else if ((xaxis == "Left") || (xaxis == "Neutral")) {
+    if ((xaxis == "Left") || (xaxis == "Neutral")) {
       if (keyIsDown(RIGHT_ARROW)) {
         direction = "Right";
         x++;
@@ -167,7 +167,7 @@ function draw() {
 
       }
     }
-    else if ((yaxis == "Down") || (yaxis == "Neutral")) {
+    if ((yaxis == "Down") || (yaxis == "Neutral")) {
       if (keyIsDown(UP_ARROW)) {
         direction = "Up";
         y--;
@@ -176,7 +176,7 @@ function draw() {
 
       }
     }
-    else if ((yaxis == "Up") || (yaxis == "Neutral")) {
+    if ((yaxis == "Up") || (yaxis == "Neutral")) {
       if (keyIsDown(DOWN_ARROW)) {
         direction = "Down";
         y++;
@@ -205,8 +205,8 @@ function draw() {
   //strokeWeight(2);
   //beginShape(LINES);
   //for (i = 0; i < points.length; i++) {
-  //var pos = points[i];
-  //vertex(pos.x, pos.y);
+    //var pos = points[i];
+    //vertex(pos.x, pos.y);
 
   //}
   //endShape();
