@@ -183,20 +183,23 @@ function draw() {
     pastdirection = direction;
     var v = createVector(x, y);
     points.push(v);
+    line(x, y, xstart, ystart);
+    xstart = x;
+    ystart = y;
 
   }
 
 
 
 
-  strokeWeight(2);
-  beginShape(LINES);
-  for (i = 0; i < points.length; i++) {
-    var pos = points[i];
-    vertex(pos.x, pos.y);
+  //strokeWeight(2);
+  //beginShape(LINES);
+  //for (i = 0; i < points.length; i++) {
+    //var pos = points[i];
+    //vertex(pos.x, pos.y);
 
-  }
-  endShape();
+  //}
+  //endShape();
 
 
 
