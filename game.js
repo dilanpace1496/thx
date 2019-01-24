@@ -24,7 +24,7 @@ var xaxis = "Neutral";
 
 var yaxis = "Neutral";
 
-var particles = [];
+var points = [];
 
 var hit = false;
 
@@ -57,6 +57,13 @@ function setup() {
 function draw() {
   background(102);
   collisionDetection();
+
+  beginShape(LINES);
+  for(i = 0; i < points.length; i++) {
+    console.log(i + ' element is ' + points[i]);
+}
+  endShape(CLOSE);
+
   // Update the position of the shape
   xpos = xpos + xspeed * xdirection;
   ypos = ypos + yspeed * ydirection;
@@ -105,7 +112,7 @@ function draw() {
         direction = "Left";
         x -= 2;
         moving = true;
-        
+
 
       }
     }
@@ -114,7 +121,7 @@ function draw() {
         direction = "Right";
         x += 2;
         moving = true;
-        
+
 
 
       }
@@ -124,7 +131,7 @@ function draw() {
         direction = "Up";
         y -= 2;
         moving = true;
-        
+
 
       }
     }
@@ -133,7 +140,7 @@ function draw() {
         direction = "Down";
         y += 2;
         moving = true;
-        
+
 
       }
     }
@@ -144,7 +151,7 @@ function draw() {
         direction = "Left";
         x--;
         moving = true;
-        
+
 
       }
     }
@@ -153,7 +160,7 @@ function draw() {
         direction = "Right";
         x++;
         moving = true;
-        
+
 
       }
     }
@@ -179,43 +186,11 @@ function draw() {
 
   if (direction != pastdirection) {
     pastdirection = direction;
-    particles.push(new Particle(x, y));
+    points.push(x, y);
+
   }
 
 
-
-
-
-
-
-  if (yaxis == "Up" && hit == false) {
-    particles.push(new Particle(x, y));
-    hit = true;
-    particles.push(new Particle(xstart, ystart));
-    
-  }
-  if (yaxis == "Down" && hit == false) {
-    particles.push(new Particle(x, y));
-    hit = true;
-    particles.push(new Particle(xstart, ystart));
-  }
-  if (xaxis == "Left" && hit == false) {
-    particles.push(new Particle(x, y));
-    hit = true;
-    particles.push(new Particle(xstart, ystart));
-  }
-  if (xaxis == "Right" && hit == false) {
-    particles.push(new Particle(x, y));
-    hit = true;
-    particles.push(new Particle(xstart, ystart));
-  }
-
-
-
-  for (var i = 0; i < particles.length; i++) {
-    particles[i].update();
-    particles[i].show();
-  }
 
 
 
