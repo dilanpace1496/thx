@@ -56,8 +56,12 @@ function setup() {
 
 function draw() {
   background(102);
-  collisionDetection();
 
+  for (var i = 0; i < points.length; i++) {
+    pos = points[i];
+    line(pos.x, pos.y, pos.xstart, pos.ystart);
+    
+  }
 
   // Update the position of the shape
   xpos = xpos + xspeed * xdirection;
@@ -181,9 +185,8 @@ function draw() {
 
   if (direction != pastdirection) {
     pastdirection = direction;
-    var v = createVector(x, y);
+    var v = createVector(x, y, xstart, ystart);
     points.push(v);
-    line(x, y, xstart, ystart);
     xstart = x;
     ystart = y;
 
