@@ -12,8 +12,8 @@ let ydirection = 1; // Top to Bottom
 var x = 600;
 var y = 550;
 
-var z = 600;
-var a = 550;
+var xstart = 600;
+var ystart = 550;
 
 
 var moving = false;
@@ -49,11 +49,11 @@ function setup() {
 
   var v = createVector(x, y);
     points.push(v);
-    var w = createVector(z, a);
+    var w = createVector(xstart, ystart);
     pointz.push(w);
 
-    z = x;
-    a = y;
+    xstart = x;
+    ystart = y;
 }
 
 function draw() {
@@ -190,11 +190,11 @@ function draw() {
     pastdirection = direction;
     var v = createVector(x, y);
     points.push(v);
-    var w = createVector(z, a);
+    var w = createVector(xstart, ystart);
     pointz.push(w);
 
-    z = x;
-    a = y;
+    xstart = x;
+    ystart = y;
 
   }
 
