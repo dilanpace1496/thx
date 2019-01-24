@@ -25,6 +25,7 @@ var xaxis = "Neutral";
 var yaxis = "Neutral";
 
 var points = [];
+var pointz = [];
 
 var hit = false;
 
@@ -59,8 +60,8 @@ function draw() {
 
   for (var i = 0; i < points.length; i++) {
     pos = points[i];
-    print(points[i]);
-    line(pos.x, pos.y, pos.z, pos.a);
+    poz = pointz[i];
+    line(pos.x, pos.y, poz.z, poz.a);
     
   }
 
@@ -186,8 +187,11 @@ function draw() {
 
   if (direction != pastdirection) {
     pastdirection = direction;
-    var v = createVector(x, y, z, a);
+    var v = createVector(x, y);
     points.push(v);
+    var w = createVector(z, a);
+    pointz.push(w);
+
     z = x;
     a = y;
 
