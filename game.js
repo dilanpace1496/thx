@@ -12,8 +12,8 @@ let ydirection = 1; // Top to Bottom
 var x = 600;
 var y = 550;
 
-var xstart = 600;
-var ystart = 550;
+var z = 600;
+var a = 550;
 
 
 var moving = false;
@@ -59,7 +59,8 @@ function draw() {
 
   for (var i = 0; i < points.length; i++) {
     pos = points[i];
-    line(pos.x, pos.y, pos.xstart, pos.ystart);
+    print(points[i]);
+    line(pos.x, pos.y, pos.z, pos.a);
     
   }
 
@@ -185,10 +186,10 @@ function draw() {
 
   if (direction != pastdirection) {
     pastdirection = direction;
-    var v = createVector(x, y, xstart, ystart);
+    var v = createVector(x, y, z, a);
     points.push(v);
-    xstart = x;
-    ystart = y;
+    z = x;
+    a = y;
 
   }
 
