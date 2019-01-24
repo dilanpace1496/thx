@@ -41,7 +41,7 @@ function preload() {
 
 function setup() {
   createCanvas(1200, 550);
-  strokeWeight(20);
+  strokeWeight(15);
   frameRate(60);
   ellipseMode(RADIUS);
   // Set the starting position of the shape
