@@ -9,9 +9,11 @@ let yspeed = 2.2; // Speed of the shape
 
 let xdirection = 1; // Left or Right
 let ydirection = 1; // Top to Bottom
-var x = 20;
-var y = 20;
+var x = 1190;
+var y = 265;
 
+var xstart = 1190;
+var ystart = 265;
 
 
 var moving = false;
@@ -24,6 +26,7 @@ var yaxis = "Neutral";
 
 var particles = [];
 
+var hit = false;
 
 var img;
 var imgg;
@@ -42,7 +45,7 @@ function collisionDetection() {
 }
 
 function setup() {
-  createCanvas(1080, 500);
+  createCanvas(1200, 550);
   strokeWeight(4);
   frameRate(60);
   ellipseMode(RADIUS);
@@ -99,34 +102,38 @@ function draw() {
   if (keyIsDown(90)) {
     if ((xaxis == "Right") || (xaxis == "Neutral")) {
       if (keyIsDown(LEFT_ARROW)) {
+        direction = "Left";
         x -= 2;
         moving = true;
-        direction = "Left";
+        
 
       }
     }
     if ((xaxis == "Left") || (xaxis == "Neutral")) {
       if (keyIsDown(RIGHT_ARROW)) {
+        direction = "Right";
         x += 2;
         moving = true;
-        direction = "Right";
+        
 
 
       }
     }
     if ((yaxis == "Down") || (yaxis == "Neutral")) {
       if (keyIsDown(UP_ARROW)) {
+        direction = "Up";
         y -= 2;
         moving = true;
-        direction = "Up";
+        
 
       }
     }
     if ((yaxis == "Up") || (yaxis == "Neutral")) {
       if (keyIsDown(DOWN_ARROW)) {
+        direction = "Down";
         y += 2;
         moving = true;
-        direction = "Down";
+        
 
       }
     }
@@ -134,48 +141,102 @@ function draw() {
   else if (keyIsDown(88)) {
     if ((xaxis == "Right") || (xaxis == "Neutral")) {
       if (keyIsDown(LEFT_ARROW)) {
+        direction = "Left";
         x--;
         moving = true;
-        direction = "Left";
+        
 
       }
     }
     if ((xaxis == "Left") || (xaxis == "Neutral")) {
       if (keyIsDown(RIGHT_ARROW)) {
+        direction = "Right";
         x++;
         moving = true;
-        direction = "Right";
+        
 
       }
     }
     if ((yaxis == "Down") || (yaxis == "Neutral")) {
       if (keyIsDown(UP_ARROW)) {
+        direction = "Up";
         y--;
         moving = true;
-        direction = "Up";
+
 
       }
     }
     if ((yaxis == "Up") || (yaxis == "Neutral")) {
       if (keyIsDown(DOWN_ARROW)) {
+        direction = "Down";
         y++;
         moving = true;
-        direction = "Down";
+
 
       }
     }
   }
 
   if (direction != pastdirection) {
-      pastdirection = direction;
-      particles.push(new Particle(x, y));
+    pastdirection = direction;
+    particles.push(new Particle(x, y));
   }
 
+
+
+
+
+
+
+  if (yaxis == "Up") {
+    particles.push(new Particle(x, y));
+    hit = true;
+    particles.push(new Particle(xstart, ystart));
+    
+  }
+  if (yaxis == "Down") {
+    particles.push(new Particle(x, y));
+    hit = true;
+    particles.push(new Particle(xstart, ystart));
+  }
+  if (xaxis == "Left") {
+    particles.push(new Particle(x, y));
+    hit = true;
+    particles.push(new Particle(xstart, ystart));
+  }
+  if (xaxis == "Right") {
+    particles.push(new Particle(x, y));
+    hit = true;
+    particles.push(new Particle(xstart, ystart));
+  }
+
+  if (hit == true){
+    if ((xaxis == "Left" && direction == "Right")||(xaxis == "Right" && direction == "Left")||(yaxis == "Up" && direction == "Down")||(yaxis == "Down" && direction == "Up")) {
+        hit = false
+        xstart = x;
+        ystart = y;
+        
+    }
+  }
 
   for (var i = 0; i < particles.length; i++) {
     particles[i].update();
     particles[i].show();
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   image(img, x, y, 20, 20);
