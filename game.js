@@ -188,29 +188,36 @@ function draw() {
 
 
 
-  if (yaxis == "Up") {
+  if (yaxis == "Up" && hit == false) {
     particles.push(new Particle(x, y));
     hit = true;
     particles.push(new Particle(xstart, ystart));
     
   }
-  if (yaxis == "Down") {
+  if (yaxis == "Down" && hit == false) {
     particles.push(new Particle(x, y));
     hit = true;
     particles.push(new Particle(xstart, ystart));
   }
-  if (xaxis == "Left") {
+  if (xaxis == "Left" && hit == false) {
     particles.push(new Particle(x, y));
     hit = true;
     particles.push(new Particle(xstart, ystart));
   }
-  if (xaxis == "Right") {
+  if (xaxis == "Right" && hit == false) {
     particles.push(new Particle(x, y));
     hit = true;
     particles.push(new Particle(xstart, ystart));
   }
 
-  
+  if (hit == true){
+    if ((xaxis == "Left" && direction == "Right")||(xaxis == "Right" && direction == "Left")||(yaxis == "Up" && direction == "Down")||(yaxis == "Down" && direction == "Up")) {
+        hit = false
+        xstart = x;
+        ystart = y;
+        
+    }
+  }
 
   for (var i = 0; i < particles.length; i++) {
     particles[i].update();
