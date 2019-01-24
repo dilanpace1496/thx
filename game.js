@@ -27,6 +27,7 @@ var yaxis = "Neutral";
 var points = [];
 var pointz = [];
 
+
 var hit = false;
 
 var img;
@@ -62,7 +63,7 @@ function draw() {
   for (var i = 0; i < points.length; i++) {
     pos = points[i];
     endpos = pointz[i];
-    line(pos.x, pos.y, endpos.z, endpos.a);
+    line(pos.x, pos.y, endpos.x, endpos.y);
     
   }
 
