@@ -9,11 +9,11 @@ let yspeed = 2.2; // Speed of the shape
 
 let xdirection = 1; // Left or Right
 let ydirection = 1; // Top to Bottom
-var x = 1190;
-var y = 265;
+var x = 600;
+var y = 550;
 
-var xstart = 1190;
-var ystart = 265;
+var xstart = 600;
+var ystart = 550;
 
 
 var moving = false;
