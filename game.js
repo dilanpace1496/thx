@@ -59,9 +59,11 @@ function draw() {
   collisionDetection();
 
   beginShape(LINES);
-  for(i = 0; i < points.length; i++) {
-    console.log(i + ' element is ' + points[i]);
-}
+  for (i = 0; i < points.length; i++) {
+    var pos = points[i];
+    vertex(pos.x, pos.y);
+    print(pos.x, pos.y)
+  }
   endShape(CLOSE);
 
   // Update the position of the shape
@@ -186,7 +188,8 @@ function draw() {
 
   if (direction != pastdirection) {
     pastdirection = direction;
-    points.push(x, y);
+    var v = createVector(x, y);
+    points.push(v);
 
   }
 
