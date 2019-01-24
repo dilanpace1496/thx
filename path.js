@@ -17,7 +17,7 @@ function Particle(x, y) {
       
       
       
-      beginShape();
+      beginShape(POINTS);
       for (var i = 0; i < this.history.length; i++) {
         var pos = this.history[i];
         
