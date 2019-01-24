@@ -17,7 +17,7 @@ function Particle(x, y) {
 
 
 
-    beginShape(POINTS);
+    beginShape(LINES);
     for (var i = 0; i < this.history.length; i++) {
       var pos = this.history[i];
 
@@ -25,16 +25,9 @@ function Particle(x, y) {
     }
     endShape(CLOSE);
 
-
+    
   }
 
-  beginShape();
-  vertex(220, 220);
-  vertex(240, 220);
-  vertex(240, 240);
-  vertex(260, 240);
-  vertex(260, 260);
-  vertex(220, 260);
-  endShape(CLOSE);
+  
 
 }
