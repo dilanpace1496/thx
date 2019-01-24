@@ -12,9 +12,18 @@ let ydirection = 1; // Top to Bottom
 var x = 20;
 var y = 20;
 
+
+
+var moving = false;
+var direction = "Neutral";
+var pastdirection = "";
+
 var xaxis = "Neutral";
 
 var yaxis = "Neutral";
+
+var particles = [];
+
 
 var img;
 var imgg;
@@ -23,11 +32,11 @@ function preload() {
   imgg = loadImage('assets/THX_logo.png');
 }
 
-function collisionDetection(){
-  if (x > xpos + imgWidth && x < xpos - imgWidth){
+function collisionDetection() {
+  if (x > xpos + imgWidth && x < xpos - imgWidth) {
     console.log("BITCH!");
   }
-  if (y > ypos + imgHeight && y < ypos - imgHeight){
+  if (y > ypos + imgHeight && y < ypos - imgHeight) {
     console.log("GET OVER HERE!");
   }
 }
@@ -60,65 +69,119 @@ function draw() {
 
 
 
-if (x > width - 20) {
-  // If the object reaches either edge, multiply speed by -1 to turn it around.
-  xaxis = "Right";
-} else if (x < 0) {
-  xaxis = "Left";
+  if (x > width - 20) {
+    // If the object reaches either edge, multiply speed by -1 to turn it around.
+    xaxis = "Right";
+  } else if (x < 0) {
+    xaxis = "Left";
+  }
+
+
+  if (y > height - 20) {
+    // If the object reaches either edge, multiply speed by -1 to turn it around.
+    yaxis = "Down";
+
+  } else if (y < 0) {
+    yaxis = "Up";
+  }
+
+  if ((x <= width - 20) && (x >= 0) && (y <= height - 20) && (y >= 0)) {
+    xaxis = "Neutral"
+    yaxis = "Neutral"
+  }
+
+
+  // Draw the shape
+  image(imgg, xpos, ypos, imgHeight, imgWidth);
+
+  moving = false;
+
+  if (keyIsDown(90)) {
+    if ((xaxis == "Right") || (xaxis == "Neutral")) {
+      if (keyIsDown(LEFT_ARROW)) {
+        x -= 2;
+        moving = true;
+        direction = "Left";
+
+      }
+    }
+    if ((xaxis == "Left") || (xaxis == "Neutral")) {
+      if (keyIsDown(RIGHT_ARROW)) {
+        x += 2;
+        moving = true;
+        direction = "Right";
+
+
+      }
+    }
+    if ((yaxis == "Down") || (yaxis == "Neutral")) {
+      if (keyIsDown(UP_ARROW)) {
+        y -= 2;
+        moving = true;
+        direction = "Up";
+
+      }
+    }
+    if ((yaxis == "Up") || (yaxis == "Neutral")) {
+      if (keyIsDown(DOWN_ARROW)) {
+        y += 2;
+        moving = true;
+        direction = "Down";
+
+      }
+    }
+  }
+  else if (keyIsDown(88)) {
+    if ((xaxis == "Right") || (xaxis == "Neutral")) {
+      if (keyIsDown(LEFT_ARROW)) {
+        x--;
+        moving = true;
+        direction = "Left";
+
+      }
+    }
+    if ((xaxis == "Left") || (xaxis == "Neutral")) {
+      if (keyIsDown(RIGHT_ARROW)) {
+        x++;
+        moving = true;
+        direction = "Right";
+
+      }
+    }
+    if ((yaxis == "Down") || (yaxis == "Neutral")) {
+      if (keyIsDown(UP_ARROW)) {
+        y--;
+        moving = true;
+        direction = "Up";
+
+      }
+    }
+    if ((yaxis == "Up") || (yaxis == "Neutral")) {
+      if (keyIsDown(DOWN_ARROW)) {
+        y++;
+        moving = true;
+        direction = "Down";
+
+      }
+    }
+  }
+
+  if (direction != pastdirection) {
+      pastdirection = direction;
+      particles.push(new Particle(x, y));
+  }
+
+
+  for (var i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].show();
+  }
+
+
+  image(img, x, y, 20, 20);
+
+
+
+
 }
 
-
-if (y > height - 20) {
-  // If the object reaches either edge, multiply speed by -1 to turn it around.
-  yaxis = "Down";
-
-} else if (y < 0) {
-  xaxis = "Up";
-}
-
-if ((x <= width - 20) && (x >= 0) && (y <= height - 20) && (y >= 0)) {
-  xaxis = "Neutral"
-  yaxis = "Neutral"
-}
-
-
-// Draw the shape
-image(imgg, xpos, ypos, imgHeight, imgWidth);
-
-if (keyIsDown(90)) {
-  if (keyIsDown(LEFT_ARROW)) {
-    x -= 2;
-  }
-  if (keyIsDown(RIGHT_ARROW)) {
-    x += 2;
-  }
-  if (keyIsDown(UP_ARROW)) {
-    y -= 2;
-  }
-  if (keyIsDown(DOWN_ARROW)) {
-    y += 2;
-  }
-}
-else if (keyIsDown(88)) {
-  if (keyIsDown(LEFT_ARROW)) {
-    x--;
-  }
-  if (keyIsDown(RIGHT_ARROW)) {
-    x++;
-  }
-  if (keyIsDown(UP_ARROW)) {
-    y--;
-  }
-  if (keyIsDown(DOWN_ARROW)) {
-    y++;
-  }
-}
-
-
-
-image(img, x, y, 20, 20);
-
-
-
-
-}
