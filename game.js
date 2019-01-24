@@ -210,14 +210,7 @@ function draw() {
     particles.push(new Particle(xstart, ystart));
   }
 
-  if (hit == true){
-    if ((xaxis == "Left" && direction == "Right")||(xaxis == "Right" && direction == "Left")||(yaxis == "Up" && direction == "Down")||(yaxis == "Down" && direction == "Up")) {
-        hit = false
-        xstart = x;
-        ystart = y;
-        
-    }
-  }
+  
 
   for (var i = 0; i < particles.length; i++) {
     particles[i].update();
